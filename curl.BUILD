@@ -185,6 +185,7 @@ cc_library(
         "@platforms//os:ios" : [":Apple"],
         "@platforms//os:tvos" : [":Apple"],
         "@platforms//os:watchos" : [":Apple"],
+        "//conditions:default" : [],
     }),
     copts = [
         # Suppress curl warnings, figuring it's a popular enough dependency that the user will treat it as a black box.
