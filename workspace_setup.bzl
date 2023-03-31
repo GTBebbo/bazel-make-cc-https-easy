@@ -26,17 +26,6 @@ def hedron_make_cc_https_easy():
         strip_prefix = "cpr-1.10.2",
     )
 
-    # CPR (temporarily) needs boost::filesystem to backfill std::filesystem on Apple platforms.
-    # This is not public API; we anticipate eliminating it at some point in the future.
-    # maybe(
-    #     http_archive,
-    #     name = "com_github_nelhage_rules_boost",
-    #     url = "https://github.com/nelhage/rules_boost/archive/5729d34dcf595874f32b9f1aa1134db65fe78fda.tar.gz",
-    #     sha256 = "bf488e4c472832a303d31ed20ea0ffdd8fa974654969b0c129b7c0ce4273f103",
-    #     strip_prefix = "rules_boost-5729d34dcf595874f32b9f1aa1134db65fe78fda",
-    # )
-    # boost_deps()
-
     # CPR wraps libcurl
     # Note: libcurl updates are auto-PRd but not auto-merged, because the defines required to build it change frequently enough that you need to manually keep curl.BUILD in sync with https://github.com/curl/curl/commits/master/CMakeLists.txt. @cpsauer is responsible.
     maybe(
@@ -46,17 +35,4 @@ def hedron_make_cc_https_easy():
         url = "https://github.com/curl/curl/archive/curl-8_0_1.tar.gz",
         sha256 = "d9aefeb87998472cd79418edd4fb4dc68c1859afdbcbc2e02400b220adc64ec1",
         strip_prefix = "curl-curl-8_0_1",
-    )
-
-    # libcurl needs to bundle an SSL library on Android. We're using boringssl because it has easy Bazel support. Despite it's Google-only orientation, it's also used in, e.g., Envoy. But if LibreSSL had Bazel wrappings, we'd probably consider it.
-    # We're pointing our own mirror of google/boringssl:master-with-bazel to get Renovate auto-update. Otherwise, Renovate will keep moving us back to master, which doesn't support Bazel.
-        # https://bugs.chromium.org/p/boringssl/issues/detail?id=542 tracks having bazel on the boringssl master branch.
-        # https://github.com/renovatebot/renovate/issues/18492 tracks Renovate support for non-default branches.
-    # OPTIMNOTE: Boringssl's BUILD files should really be using assembly on Windows, if we add support https://bugs.chromium.org/p/boringssl/issues/detail?id=531
-    maybe(
-        http_archive,
-        name = "boringssl",
-        url = "https://github.com/hedronvision/boringssl/archive/e5be53921470104efdf61db3d6b9a7415d9c763b.tar.gz",
-        sha256 = "bc15ba0cc061d2252cb4a177750ff8990a8e46e52c5299a2c7f3d0b47c0db824",
-        strip_prefix = "boringssl-e5be53921470104efdf61db3d6b9a7415d9c763b",
     )
