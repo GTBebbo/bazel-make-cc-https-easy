@@ -6,8 +6,7 @@ workspace(name = "hedron_make_cc_https_easy")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
-maybe(
-    http_archive,
+http_archive(
     name = "com_github_nelhage_rules_boost",
     url = "https://github.com/nelhage/rules_boost/archive/5729d34dcf595874f32b9f1aa1134db65fe78fda.tar.gz",
     sha256 = "bf488e4c472832a303d31ed20ea0ffdd8fa974654969b0c129b7c0ce4273f103",
