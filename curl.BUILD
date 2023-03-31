@@ -190,7 +190,7 @@ cc_library(
     copts = [
         # Suppress curl warnings, figuring it's a popular enough dependency that the user will treat it as a black box.
         # If find you can remove these without getting warnings, then do so.
-        "-Wno-deprecated-declarations",
+#         "-Wno-deprecated-declarations",
         "-Wno-pointer-bool-conversion",
         # Because there's no local_includes attribute. CS filed at https://github.com/bazelbuild/bazel/issues/16472
         "-Iexternal/curl/lib",
