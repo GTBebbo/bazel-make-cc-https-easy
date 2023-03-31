@@ -171,7 +171,7 @@ cc_library(
         "@platforms//os:tvos" : ["USE_SECTRANSP", "HAVE_GETIFADDRS", "HAVE_MACH_ABSOLUTE_TIME", "HAVE_SYS_SOCKIO_H"],
         "@platforms//os:watchos" : ["USE_SECTRANSP", "HAVE_GETIFADDRS", "HAVE_MACH_ABSOLUTE_TIME", "HAVE_SYS_SOCKIO_H"],
         "@platforms//os:windows" : ["USE_SCHANNEL"],
-        "@conditions//default" : [],
+        "//conditions:default" : [],
         # WinSSL windows USE_SCHANNEL
     }) + [
         "HAVE_LIBZ",
